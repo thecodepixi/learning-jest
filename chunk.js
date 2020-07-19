@@ -9,7 +9,6 @@ const chunkArray = (arr, len) => {
       last.push(val);
     }
   });
-  console.log(chunkedArr);
   return chunkedArr;
 };
 

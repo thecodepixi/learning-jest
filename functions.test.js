@@ -75,10 +75,26 @@ test('admin should be in username', () => {
   expect(usernames).toContain('admin');
 });
 
-// async data tests with async/await try/catch
+// async data tests expecting assertions and returned promise
 test('functions.fetchUser should return a user with the name Leanne Graham', () => {
-  expect.assertions(1);
+  expect.hasAssertions();
   return functions.fetchUser().then((user) => {
     expect(user.name).toEqual('Leanne Graham');
   });
+});
+
+// async test with async/await
+test('functions.fetchUser tested with async/await', async () => {
+  let user = await functions.fetchUser();
+  expect(user.name).toEqual('Leanne Graham');
+});
+
+// async test with try/catch (also uses to async/await)
+test('functions.fetchUser tested with try/catch', async () => {
+  try {
+    let user = await functions.fetchUser();
+    expect(user.name).toEqual('Leanne Graham');
+  } catch (err) {
+    console.error(err);
+  }
 });
